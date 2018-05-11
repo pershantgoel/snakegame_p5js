@@ -25,11 +25,12 @@ this.update= ()=>{
     for(let i=0 ; i<this.tail.length-1 ; i++){  //in this loop the tail of the snake will move with snake
         this.tail[i] = this.tail[i+1];
     }
+    this.tail[this.total-1] = createVector(this.x , this.y);
 
-for (let i=0; i<this.total-1 ;i++){    //this loop will add an element(snake body part at the end)
-    this.tail[i] = this.tail[i+1]; 
-}
-this.tail[this.total-1] = createVector(this.x , this.y);    //????????????what is this doing
+// for (let i=0; i<this.total-1 ;i++){    //this loop will add an element(snake body part at the end)
+//     this.tail[i] = this.tail[i+1]; 
+// }
+// this.tail[this.total-1] = createVector(this.x , this.y);    //????????????what is this doing
 this.x += (this.xspeed*scl);
 this.y += (this.yspeed*scl);
 
