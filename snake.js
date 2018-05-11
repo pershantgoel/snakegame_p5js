@@ -21,10 +21,24 @@ this.dir=(x,y)=>{
     this.yspeed=y;
 }
 
-this.update= ()=>{
-    for(let i=0 ; i<this.tail.length-1 ; i++){  //in this loop the tail of the snake will move with snake
-        this.tail[i] = this.tail[i+1];
+this.death=()=>{        // dying the snake if it encounters with its own body
+    for(let i=0 ; i<this.tail.length; i++){
+        var pos = this.tail[i];
+        var d = dist(this.x , this.y, pos.x, pos.y);
+        if(d<1){
+            this.total=0;
+            this.tail=[];
+        }
     }
+}
+
+this.update= ()=>{
+    if(this.total === this.tail.length){    //no food is been eaten
+        for(let i=0 ; i<this.tail.length-1 ; i++){  //in this loop the tail of the snake will move with snake
+            this.tail[i] = this.tail[i+1];
+        }
+    }
+    
     this.tail[this.total-1] = createVector(this.x , this.y);
 
 // for (let i=0; i<this.total-1 ;i++){    //this loop will add an element(snake body part at the end)
@@ -39,7 +53,11 @@ this.y=constrain(this.y, 0, height-scl);   // it is taking height n width automa
 }
 
 this.show=()=>{
-fill(255);  //makes rect white
+    fill(255);
+    for(let i=0 ; i<this.tail.length ; i++){  //in this loop the tail of the snake will move with snake
+       rect(this.tail[i].x , this.tail[i].y , scl,scl);
+    }
+//fill(255);  //makes rect white
 for(let i=0; i<this.total; i++){
     rect(this.tail[i].x, this.tail[i].y, scl, scl);
 }
