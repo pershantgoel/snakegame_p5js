@@ -29,7 +29,7 @@ this.death=()=>{        // dying the snake if it encounters with its own body
             this.total=0;
             this.tail=[];
             //document.querySelector("h3").innerHTML="Game Over";
-            alert("next game will start");
+            alert("Game Over.........next game will start");
         }
     }
     
