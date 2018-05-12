@@ -5,6 +5,7 @@ var food;
 
 function setup() {
     createCanvas(700,500);  //width x height
+    
     s= new Snake();  //making an object of Snake constructor fn
     frameRate(10);
     pickLocation();      
